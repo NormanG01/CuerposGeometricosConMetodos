@@ -1,0 +1,309 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int intentos = 0;
+        final int MAX_INTENTOS = 3;
+
+        while (intentos < MAX_INTENTOS) {
+            System.out.println("Seleccione un cuerpo geométrico para calcular su área y volumen:");
+            System.out.println("1. Prisma rectangular");
+            System.out.println("2. Cilindro");
+            System.out.println("3. Pirámide");
+            System.out.println("4. Cono");
+            System.out.println("5. Esfera");
+            System.out.println("6. Zona esférica");
+            System.out.println("7. Casquete esférico");
+            System.out.println("8. Huso esférico y cuña esférica");
+            System.out.println("9. Ortoedro");
+            System.out.println("10. Tetraedro");
+            System.out.println("11. Hexaedro");
+            System.out.println("12. Octaedro");
+            System.out.println("13. Dodecaedro");
+            System.out.println("14. Icosaedro");
+            System.out.println("15. Tronco de cono");
+            System.out.println("16. Tronco de pirámide");
+            System.out.println("17. Salir");
+
+            int opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    calcularPrismaRectangular();
+                    break;
+                case 2:
+                    calcularCilindro();
+                    break;
+                case 3:
+                    calcularPiramide();
+                    break;
+                case 4:
+                    calcularCono();
+                    break;
+                case 5:
+                    calcularEsfera();
+                    break;
+                case 6:
+                    calcularZonaEsferica();
+                    break;
+                case 7:
+                    calcularCasqueteEsferico();
+                    break;
+                case 8:
+                    calcularHusoYCunaEsferica();
+                    break;
+                case 9:
+                    calcularOrtoedro();
+                    break;
+                case 10:
+                    calcularTetraedro();
+                    break;
+                case 11:
+                    calcularHexaedro();
+                    break;
+                case 12:
+                    calcularOctaedro();
+                    break;
+                case 13:
+                    calcularDodecaedro();
+                    break;
+                case 14:
+                    calcularIcosaedro();
+                    break;
+                case 15:
+                    calcularTroncoDeCono();
+                    break;
+                case 16:
+                    calcularTroncoDePiramide();
+                    break;
+                case 17:
+                    System.out.println("Saliendo del programa.");
+                    return;
+                default:
+                    System.out.println("Opción no válida.");
+            }
+
+            intentos++;
+        }
+
+        System.out.println("Número máximo de intentos alcanzado. Saliendo del programa.");
+    }
+
+    public static void calcularPrismaRectangular() {
+        // Implementa el cálculo para el prisma rectangular aquí
+    }
+
+    public static void calcularCilindro() {
+        // Implementa el cálculo para el cilindro aquí
+    }
+
+    public static void calcularPiramide() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el área de la base de la pirámide: ");
+        double areaBase = scanner.nextDouble();
+        System.out.println("Ingrese la altura de la pirámide: ");
+        double altura = scanner.nextDouble();
+
+        double areaLateral = 4 * (areaBase * altura) / 2;
+        double areaTotal = areaBase + areaLateral;
+        double volumen = (areaBase * altura) / 3;
+
+        System.out.println("Área lateral de la pirámide: " + areaLateral);
+        System.out.println("Área total de la pirámide: " + areaTotal);
+        System.out.println("Volumen de la pirámide: " + volumen);
+    }
+
+    public static void calcularCono() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Ingrese el radio del cono: ");
+        double radio = scanner.nextDouble();
+        System.out.println("Ingrese la altura del cono: ");
+        double altura = scanner.nextDouble();
+
+        double generatriz = Math.sqrt(radio * radio + altura * altura);
+        double areaLateral = Math.PI * radio * generatriz;
+        double areaTotal = Math.PI * radio * (radio + generatriz);
+        double volumen = (Math.PI * radio * radio * altura) / 3;
+
+        System.out.println("Área lateral del cono: " + areaLateral);
+        System.out.println("Área total del cono: " + areaTotal);
+        System.out.println("Volumen del cono: " + volumen);
+    }
+
+   public static void calcularEsfera() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio de la esfera: ");
+    double radio = scanner.nextDouble();
+
+    double areaSuperficie = 4 * Math.PI * radio * radio;
+    double volumen = (4.0 / 3.0) * Math.PI * Math.pow(radio, 3);
+
+    System.out.println("Área de superficie de la esfera: " + areaSuperficie);
+    System.out.println("Volumen de la esfera: " + volumen);
+}
+
+public static void calcularZonaEsferica() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio de la esfera: ");
+    double radio = scanner.nextDouble();
+    System.out.println("Ingrese el ángulo central en radianes (θ): ");
+    double angulo = scanner.nextDouble();
+
+    double areaZona = (angulo / (2 * Math.PI)) * (4 * Math.PI * radio * radio);
+    double longitudArco = radio * angulo;
+
+    System.out.println("Área de la zona esférica: " + areaZona);
+    System.out.println("Longitud del arco de la zona esférica: " + longitudArco);
+}
+
+public static void calcularCasqueteEsferico() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio de la esfera: ");
+    double radio = scanner.nextDouble();
+    System.out.println("Ingrese la altura del casquete esférico: ");
+    double altura = scanner.nextDouble();
+
+    double areaSuperficie = 2 * Math.PI * radio * altura;
+    double volumen = (Math.PI * altura * altura * (3 * radio - altura)) / 6;
+
+    System.out.println("Área de superficie del casquete esférico: " + areaSuperficie);
+    System.out.println("Volumen del casquete esférico: " + volumen);
+}
+
+public static void calcularHusoYCunaEsferica() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio de la esfera: ");
+    double radio = scanner.nextDouble();
+    System.out.println("Ingrese los ángulos centrales en radianes (θ1 y θ2): ");
+    double angulo1 = scanner.nextDouble();
+    double angulo2 = scanner.nextDouble();
+
+    double areaHuso = (angulo1 / (2 * Math.PI)) * (4 * Math.PI * radio * radio);
+    double areaCuna = ((angulo2 - angulo1) / (2 * Math.PI)) * (4 * Math.PI * radio * radio);
+
+    System.out.println("Área del huso esférico: " + areaHuso);
+    System.out.println("Área de la cuña esférica: " + areaCuna);
+}
+public static void calcularOrtoedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud del ortoedro: ");
+    double longitud = scanner.nextDouble();
+    System.out.println("Ingrese el ancho del ortoedro: ");
+    double ancho = scanner.nextDouble();
+    System.out.println("Ingrese la altura del ortoedro: ");
+    double altura = scanner.nextDouble();
+
+    double areaTotal = 2 * ((longitud * ancho) + (longitud * altura) + (ancho * altura));
+    double volumen = longitud * ancho * altura;
+
+    System.out.println("Área total del ortoedro: " + areaTotal);
+    System.out.println("Volumen del ortoedro: " + volumen);
+}
+public static void calcularTetraedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud de un lado del tetraedro: ");
+    double lado = scanner.nextDouble();
+
+    double areaTotal = Math.sqrt(3) * lado * lado;
+    double volumen = (lado * lado * lado) / (6 * Math.sqrt(2));
+
+    System.out.println("Área total del tetraedro: " + areaTotal);
+    System.out.println("Volumen del tetraedro: " + volumen);
+}
+public static void calcularHexaedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud de un lado del hexaedro (cubo): ");
+    double lado = scanner.nextDouble();
+
+    double areaTotal = 6 * lado * lado;
+    double volumen = lado * lado * lado;
+
+    System.out.println("Área total del hexaedro (cubo): " + areaTotal);
+    System.out.println("Volumen del hexaedro (cubo): " + volumen);
+}
+public static void calcularOctaedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud de un lado del octaedro: ");
+    double lado = scanner.nextDouble();
+
+    double areaTotal = 2 * Math.sqrt(3) * lado * lado;
+    double volumen = (lado * lado * lado * Math.sqrt(2)) / 3;
+
+    System.out.println("Área total del octaedro: " + areaTotal);
+    System.out.println("Volumen del octaedro: " + volumen);
+}
+public static void calcularDodecaedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud de un lado del dodecaedro: ");
+    double lado = scanner.nextDouble();
+
+    double areaTotal = 3 * Math.sqrt(25 + 10 * Math.sqrt(5)) * lado * lado;
+    double volumen = ((15 + 7 * Math.sqrt(5)) * lado * lado * lado) / 4;
+
+    System.out.println("Área total del dodecaedro: " + areaTotal);
+    System.out.println("Volumen del dodecaedro: " + volumen);
+}
+public static void calcularIcosaedro() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese la longitud de un lado del icosaedro: ");
+    double lado = scanner.nextDouble();
+
+    double areaTotal = 5 * Math.sqrt(3) * lado * lado;
+    double volumen = ((5 * (3 + Math.sqrt(5))) * lado * lado * lado) / 12;
+
+    System.out.println("Área total del icosaedro: " + areaTotal);
+    System.println("Volumen del icosaedro: " + volumen);
+}
+public static void calcularTroncoDeCono() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio mayor del tronco de cono: ");
+    double radioMayor = scanner.nextDouble();
+    System.out.println("Ingrese el radio menor del tronco de cono: ");
+    double radioMenor = scanner.nextDouble();
+    System.out.println("Ingrese la altura del tronco de cono: ");
+    double altura = scanner.nextDouble();
+
+    double areaLateral = Math.PI * (radioMayor + radioMenor) * Math.sqrt(Math.pow(altura, 2) + Math.pow(radioMayor - radioMenor, 2));
+    double areaTotal = Math.PI * (radioMayor + radioMenor) * (radioMayor + radioMenor + Math.sqrt(Math.pow(altura, 2) + Math.pow(radioMayor - radioMenor, 2)));
+    double volumen = (Math.PI * altura / 3) * (Math.pow(radioMayor, 2) + Math.pow(radioMenor, 2) + (radioMayor * radioMenor));
+
+    System.out.println("Área lateral del tronco de cono: " + areaLateral);
+    System.out.println("Área total del tronco de cono: " + areaTotal);
+    System.out.println("Volumen del tronco de cono: " + volumen);
+}
+public static void calcularTroncoDeCono() {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.println("Ingrese el radio mayor del tronco de cono: ");
+    double radioMayor = scanner.nextDouble();
+    System.out.println("Ingrese el radio menor del tronco de cono: ");
+    double radioMenor = scanner.nextDouble();
+    System.out.println("Ingrese la altura del tronco de cono: ");
+    double altura = scanner.nextDouble();
+
+    double areaLateral = Math.PI * (radioMayor + radioMenor) * Math.sqrt(Math.pow(altura, 2) + Math.pow(radioMayor - radioMenor, 2));
+    double areaTotal = Math.PI * (radioMayor + radioMenor) * (radioMayor + radioMenor + Math.sqrt(Math.pow(altura, 2) + Math.pow(radioMayor - radioMenor, 2)));
+    double volumen = (Math.PI * altura / 3) * (Math.pow(radioMayor, 2) + Math.pow(radioMenor, 2) + (radioMayor * radioMenor));
+
+    System.out.println("Área lateral del tronco de cono: " + areaLateral);
+    System.out.println("Área total del tronco de cono: " + areaTotal);
+    System.out.println("Volumen del tronco de cono: " + volumen);
+}
+
+    }
+}
